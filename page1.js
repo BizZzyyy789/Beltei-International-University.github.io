@@ -1,6 +1,6 @@
 const titleElement = document.getElementById('typing-title');
 document.querySelector('.text_thanks').style.visibility = 'hidden';
-        const textToType = "Beltei university";
+        const textToType = "Beltei International university";
         let index = 0;
         let isTyping = true;
         function typeAndRemoveTitle() {
