@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../picture/belteilogo.png" type="image/x-icon">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+     <title>Registration Form</title>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script>
+        function downloadPDF() {
+           var name = document.getElementById("name").value;
+           var email = document.getElementById("email").value;
+           var phone = document.getElementById("number").value;
+           var city = document.getElementById("nation").value;
+           var state = document.getElementById("pass").value;
+           var statee = document.getElementById("age").value;
+            if(name.length == 0 || email.length == 0 || phone.length == 0 || city.length == 0 || state.length == 0 || statee.length == 0)
+            {
+                return alert('Please check your information again....! THANKS');
+            }
+            else
+            {
+                var { jsPDF } = jspdf;
+                var doc = new jsPDF();
+                const image = new Image();
+                image.src = "../picture/belteilogo.png";
+                doc.addImage(image, "png", 25,7,40,45);
+                doc.setFont("Times New Roman", "bold", 55);
+                doc.setTextColor("#A2CD05");
+                doc.text(71.5,38, "BELTEI INTERNATIONAL UNIVERSITY");
+                doc.text(70,45, "Quality Efficiency Excellency Morality Virtue");
+                doc.setTextColor("#001EE5");
+                doc.text(80, 65, "APPLICATION FORM");
+                doc.setTextColor("#000000");
+                doc.text(30, 80, "FULL-NAME : " + name);
+                doc.text(30, 90, "AGE : " + statee);
+                doc.text(30, 100, "PHONE : " + phone);
+                doc.text(30, 110, "NATION : " + city);
+                doc.text(30, 120, "DATE : " + state);
+                doc.text(30, 130, "EMAIL : " + email);
+                doc.text(152, 150,  state);
+                doc.text(150, 160,  name);
+                doc.save("belteiuniversityform.pdf");
+                Swal.fire(
+                'THANKS!',
+                'PLease click button!',
+                'success'
+              );
+            }
+        }
+     </script>
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Form Application</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" required id="name">
+          </div>
+          <div class="input-box">
+            <span class="details">AGE</span>
+            <input type="text" placeholder="Enter your age" required id="age">
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" required id="email">
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" required id="number">
+          </div>
+          <div class="input-box">
+            <span class="details">Nation</span>
+            <input type="text" placeholder="Enter your Nation" required id="nation">
+          </div>
+          <div class="input-box">
+            <span class="details">DATE</span>
+            <input type="text" placeholder="DATE" required id="pass">
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span> &nbsp;&nbsp;&nbsp;
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span> &nbsp;&nbsp;&nbsp;
+            <span class="gender">Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span> &nbsp;&nbsp;&nbsp;
+            <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="button" value="SUBMIT" onclick="downloadPDF()">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
